@@ -1,2 +1,2 @@
 # TheGreatNorthAmericanBirdQuiz
-A web-based quiz game that tests your north american bird knowledge 
+A godot pixel-art quiz game that tests your north american bird knowledge 
