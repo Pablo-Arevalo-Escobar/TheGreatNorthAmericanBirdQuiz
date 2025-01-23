@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjarjy7q1jae"]
+
+[ext_resource type="Script" path="res://scripts/BirdReader.gd" id="1_ahmav"]
+
+[node name="ListDisplay" type="Node2D"]
+scale = Vector2(1, 1.00489)
+script = ExtResource("1_ahmav")
+
+[node name="ItemList" type="ItemList" parent="."]
+offset_right = 1150.0
+offset_bottom = 650.0

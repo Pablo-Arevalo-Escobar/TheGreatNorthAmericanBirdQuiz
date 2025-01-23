@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3q65b4edirqv"]
+
+[ext_resource type="Script" path="res://scripts/cube.gd" id="1_whhdi"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xqkc8"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_puoo6"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Cube" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77555, 1.22661, -0.027729)
+script = ExtResource("1_whhdi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cube"]
+mesh = SubResource("BoxMesh_xqkc8")
+
+[node name="InclinePlane" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.15859, 0.720478, 0, -5.35944, 0.693477, 0, 0, 0, 6.87608, 0, 0, 0)
+mesh = SubResource("PlaneMesh_puoo6")

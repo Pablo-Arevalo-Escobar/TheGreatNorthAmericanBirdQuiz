@@ -1,0 +1,123 @@
+[gd_scene load_steps=10 format=3 uid="uid://bu7hmoo67h5ue"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_po646"]
+[ext_resource type="Script" path="res://scripts/map_view.gd" id="2_k0eok"]
+[ext_resource type="SpriteFrames" uid="uid://cup2ep6yr68be" path="res://img/MapAnim.tres" id="3_qhh7q"]
+[ext_resource type="Script" path="res://scripts/bird_view.gd" id="4_ps23l"]
+[ext_resource type="Texture2D" uid="uid://db51msohtalmk" path="res://img/PileatedWoodArea.png" id="4_wor7l"]
+[ext_resource type="Texture2D" uid="uid://cinib6fgb3ap0" path="res://img/pilliated_woodpecker.jpg" id="5_j1yij"]
+[ext_resource type="Script" path="res://scripts/BirdReader.gd" id="6_2yjx1"]
+[ext_resource type="PackedScene" uid="uid://ceraccsnbslan" path="res://scenes/audio_vis.tscn" id="6_iolxi"]
+[ext_resource type="Script" path="res://scripts/score_view.gd" id="7_4k3he"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_po646")
+
+[node name="MapView" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 64.0
+offset_right = 40.0
+offset_bottom = 104.0
+script = ExtResource("2_k0eok")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MapView"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="MapView/SubViewportContainer"]
+disable_3d = true
+handle_input_locally = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="MapDisplay" type="AnimatedSprite2D" parent="MapView/SubViewportContainer/SubViewport"]
+sprite_frames = ExtResource("3_qhh7q")
+autoplay = "default"
+frame_progress = 0.667564
+centered = false
+
+[node name="Overlay" type="Sprite2D" parent="MapView/SubViewportContainer/SubViewport"]
+modulate = Color(0.807609, 0.899597, 0.933223, 0.596078)
+texture = ExtResource("4_wor7l")
+centered = false
+
+[node name="BirdView" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 640.0
+offset_top = 64.0
+offset_right = 1152.0
+offset_bottom = 424.0
+script = ExtResource("4_ps23l")
+
+[node name="Display" type="Sprite2D" parent="BirdView"]
+position = Vector2(248, 136)
+scale = Vector2(0.274817, 0.390517)
+texture = ExtResource("5_j1yij")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="BirdView"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 260.0
+offset_right = 448.0
+offset_bottom = 360.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="BirdView/SubViewportContainer"]
+disable_3d = true
+handle_input_locally = false
+size = Vector2i(384, 100)
+render_target_update_mode = 4
+
+[node name="ShowSpectrum" parent="BirdView/SubViewportContainer/SubViewport" instance=ExtResource("6_iolxi")]
+
+[node name="NameView" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 448.0
+offset_right = 40.0
+offset_bottom = 488.0
+script = ExtResource("6_2yjx1")
+
+[node name="ItemList" type="ItemList" parent="NameView"]
+layout_mode = 0
+offset_top = -24.0
+offset_right = 1155.0
+offset_bottom = 197.135
+scale = Vector2(0.998044, 1.01188)
+
+[node name="ScoreView" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_4k3he")
+
+[node name="Score" type="RichTextLabel" parent="ScoreView"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 16.0
+offset_right = 552.0
+offset_bottom = 56.0
+text = "10"
+
+[node name="Left" type="Button" parent="ScoreView"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 16.0
+offset_bottom = 12.0
+scale = Vector2(1.48612, 1.48612)
+text = "Left"
+
+[node name="Right" type="Button" parent="ScoreView"]
+layout_mode = 0
+offset_left = 1064.0
+offset_top = 8.0
+offset_right = 1113.0
+offset_bottom = 39.0
+scale = Vector2(1.48612, 1.48612)
+text = "Right"

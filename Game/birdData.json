@@ -1,0 +1,16 @@
+{
+	"birds": [
+		{
+			"name": "Pilliated Woodpecker",
+			"audio": "PilleatedWoodpecker.mp3",
+			"sprite": "pilliated_woodpecker.jpg",
+			"area" : "PileatedWoodArea.png",
+		},
+		{
+			"name": "stellars_jay",
+			"audio": "stellers_jay.mp3",
+			"sprite": "stellars_jay.jpg",
+			"area" : "StellersJayArea.png",
+		}
+	]
+}

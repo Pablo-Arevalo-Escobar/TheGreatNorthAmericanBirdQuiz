@@ -1,0 +1,61 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://cup2ep6yr68be"]
+
+[ext_resource type="Texture2D" uid="uid://ctpor73i3uqnv" path="res://img/Map2-Sheet.png" id="1_584vn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkc4x"]
+atlas = ExtResource("1_584vn")
+region = Rect2(0, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6k53k"]
+atlas = ExtResource("1_584vn")
+region = Rect2(640, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alnj6"]
+atlas = ExtResource("1_584vn")
+region = Rect2(1280, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6j2y"]
+atlas = ExtResource("1_584vn")
+region = Rect2(1920, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ju8an"]
+atlas = ExtResource("1_584vn")
+region = Rect2(2560, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcbh1"]
+atlas = ExtResource("1_584vn")
+region = Rect2(3200, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_so5i5"]
+atlas = ExtResource("1_584vn")
+region = Rect2(3840, 0, 640, 360)
+
+[resource]
+resource_name = "DefMap"
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_gkc4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6k53k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alnj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6j2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ju8an")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcbh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_so5i5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
