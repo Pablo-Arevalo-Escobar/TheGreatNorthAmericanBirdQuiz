@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cinib6fgb3ap0"
-path="res://.godot/imported/pilliated_woodpecker.jpg-ee1a294fbd3bde08158f7af5daaff7ea.ctex"
+uid="uid://bjhagljidv1uy"
+path="res://.godot/imported/red_headed_woodpecker.png-8b3dbf0a68744c252cdcdb18e5d014d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/pilliated_woodpecker.jpg"
-dest_files=["res://.godot/imported/pilliated_woodpecker.jpg-ee1a294fbd3bde08158f7af5daaff7ea.ctex"]
+source_file="res://img/overlays/red_headed_woodpecker.png"
+dest_files=["res://.godot/imported/red_headed_woodpecker.png-8b3dbf0a68744c252cdcdb18e5d014d5.ctex"]
 
 [params]
 

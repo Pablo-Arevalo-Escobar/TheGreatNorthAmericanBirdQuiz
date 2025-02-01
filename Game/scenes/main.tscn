@@ -1,18 +1,39 @@
-[gd_scene load_steps=10 format=3 uid="uid://bu7hmoo67h5ue"]
+[gd_scene load_steps=18 format=3 uid="uid://bu7hmoo67h5ue"]
 
+[ext_resource type="StyleBox" uid="uid://bi477umofjmp0" path="res://new_style_box_flat.tres" id="1_1cpmh"]
+[ext_resource type="FontFile" uid="uid://vmgqtg0bm3b2" path="res://img/chars.webp" id="1_1lwqi"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_po646"]
 [ext_resource type="Script" path="res://scripts/map_view.gd" id="2_k0eok"]
-[ext_resource type="SpriteFrames" uid="uid://cup2ep6yr68be" path="res://img/MapAnim.tres" id="3_qhh7q"]
+[ext_resource type="SpriteFrames" uid="uid://cup2ep6yr68be" path="res://img/other/MapAnim.tres" id="3_qhh7q"]
 [ext_resource type="Script" path="res://scripts/bird_view.gd" id="4_ps23l"]
-[ext_resource type="Texture2D" uid="uid://db51msohtalmk" path="res://img/PileatedWoodArea.png" id="4_wor7l"]
-[ext_resource type="Texture2D" uid="uid://cinib6fgb3ap0" path="res://img/pilliated_woodpecker.jpg" id="5_j1yij"]
+[ext_resource type="Texture2D" uid="uid://db51msohtalmk" path="res://img/overlays/pilliated_woodpecker.png" id="4_wor7l"]
 [ext_resource type="Script" path="res://scripts/BirdReader.gd" id="6_2yjx1"]
+[ext_resource type="Texture2D" uid="uid://booxxwmy5eg2d" path="res://img/birds/pilliated_woodpecker.png" id="6_gnofl"]
 [ext_resource type="PackedScene" uid="uid://ceraccsnbslan" path="res://scenes/audio_vis.tscn" id="6_iolxi"]
 [ext_resource type="Script" path="res://scripts/score_view.gd" id="7_4k3he"]
+[ext_resource type="Shader" path="res://scenes/circle.gdshader" id="10_s7q5a"]
+[ext_resource type="Shader" path="res://scenes/main.gdshader" id="10_utg7s"]
+[ext_resource type="Texture2D" uid="uid://dodq2rkp180w" path="res://img/other/WoodenBranch.png" id="14_eoe7a"]
+
+[sub_resource type="Theme" id="Theme_l07h1"]
+default_font = ExtResource("1_1lwqi")
+Button/styles/disabled = ExtResource("1_1cpmh")
+Button/styles/focus = ExtResource("1_1cpmh")
+Button/styles/normal = ExtResource("1_1cpmh")
+Button/styles/pressed = ExtResource("1_1cpmh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_krbp5"]
+shader = ExtResource("10_utg7s")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1onre"]
+shader = ExtResource("10_s7q5a")
+shader_parameter/height = 0.8
+shader_parameter/width = 0.6
 
 [node name="Main" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+theme = SubResource("Theme_l07h1")
 script = ExtResource("1_po646")
 
 [node name="MapView" type="Control" parent="."]
@@ -25,8 +46,8 @@ script = ExtResource("2_k0eok")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="MapView"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 640.0
+offset_bottom = 360.0
 
 [node name="SubViewport" type="SubViewport" parent="MapView/SubViewportContainer"]
 disable_3d = true
@@ -45,6 +66,26 @@ modulate = Color(0.807609, 0.899597, 0.933223, 0.596078)
 texture = ExtResource("4_wor7l")
 centered = false
 
+[node name="CanvasLayer" type="CanvasLayer" parent="MapView/SubViewportContainer/SubViewport"]
+offset = Vector2(0, -63.46)
+transform = Transform2D(1, 0, 0, 1, 0, -63.46)
+
+[node name="ColorRect" type="ColorRect" parent="MapView/SubViewportContainer/SubViewport/CanvasLayer"]
+material = SubResource("ShaderMaterial_krbp5")
+offset_top = 56.0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MapBackground" type="ColorRect" parent="MapView"]
+z_index = -1
+layout_mode = 0
+offset_top = -8.0
+offset_right = 640.0
+scale = Vector2(1, 45.8506)
+color = Color(0.00184107, 0.00184107, 0.00184107, 1)
+
 [node name="BirdView" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -56,8 +97,19 @@ script = ExtResource("4_ps23l")
 
 [node name="Display" type="Sprite2D" parent="BirdView"]
 position = Vector2(248, 136)
-scale = Vector2(0.274817, 0.390517)
-texture = ExtResource("5_j1yij")
+scale = Vector2(3, 3)
+texture = ExtResource("6_gnofl")
+
+[node name="ColorRect" type="ColorRect" parent="BirdView"]
+z_index = -1
+material = SubResource("ShaderMaterial_1onre")
+layout_mode = 0
+offset_left = 48.0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 48.0
+scale = Vector2(9.81589, 6.4)
+color = Color(0.0724368, 0.0744743, 0.0617951, 1)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="BirdView"]
 layout_mode = 0
@@ -86,38 +138,181 @@ script = ExtResource("6_2yjx1")
 [node name="ItemList" type="ItemList" parent="NameView"]
 layout_mode = 0
 offset_top = -24.0
-offset_right = 1155.0
-offset_bottom = 197.135
-scale = Vector2(0.998044, 1.01188)
+offset_right = 1140.89
+offset_bottom = 219.655
+scale = Vector2(1.011, 0.967275)
+focus_mode = 0
 
 [node name="ScoreView" type="Control" parent="."]
+z_index = -1
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+scale = Vector2(1, 0.995941)
 script = ExtResource("7_4k3he")
 
 [node name="Score" type="RichTextLabel" parent="ScoreView"]
+custom_minimum_size = Vector2(36.165, 0)
 layout_mode = 0
 offset_left = 512.0
-offset_top = 16.0
-offset_right = 552.0
-offset_bottom = 56.0
-text = "10"
+offset_top = 16.0652
+offset_right = 639.06
+offset_bottom = 56.0652
+text = "10 / 0"
+scroll_active = false
 
 [node name="Left" type="Button" parent="ScoreView"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 4.0
-offset_right = 16.0
-offset_bottom = 12.0
+offset_left = 16.0
+offset_top = 8.03261
+offset_right = 88.0
+offset_bottom = 32.0326
 scale = Vector2(1.48612, 1.48612)
 text = "Left"
 
 [node name="Right" type="Button" parent="ScoreView"]
 layout_mode = 0
-offset_left = 1064.0
-offset_top = 8.0
-offset_right = 1113.0
-offset_bottom = 39.0
+offset_left = 1016.0
+offset_top = 8.03261
+offset_right = 1104.0
+offset_bottom = 39.0326
 scale = Vector2(1.48612, 1.48612)
 text = "Right"
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -3
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 64.0
+scale = Vector2(1, 10.36)
+mouse_filter = 2
+color = Color(0.129228, 0.185706, 0.377124, 1)
+
+[node name="BranchSeperator" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Node2D" type="Node2D" parent="BranchSeperator"]
+position = Vector2(0, 424)
+scale = Vector2(0.84, 0.720002)
+
+[node name="WoodenBranch" type="Sprite2D" parent="BranchSeperator/Node2D"]
+position = Vector2(29.9998, 4)
+scale = Vector2(0.599996, 0.4)
+texture = ExtResource("14_eoe7a")
+
+[node name="WoodenBranch2" type="Sprite2D" parent="BranchSeperator/Node2D"]
+position = Vector2(85.9998, 4)
+scale = Vector2(0.599996, 0.4)
+texture = ExtResource("14_eoe7a")
+
+[node name="WoodenBranch3" type="Sprite2D" parent="BranchSeperator/Node2D"]
+position = Vector2(142, 4)
+scale = Vector2(0.599996, 0.4)
+texture = ExtResource("14_eoe7a")
+
+[node name="WoodenBranch4" type="Sprite2D" parent="BranchSeperator/Node2D"]
+position = Vector2(202, 4)
+scale = Vector2(0.599996, 0.4)
+texture = ExtResource("14_eoe7a")
+
+[node name="WoodenBranch5" type="Sprite2D" parent="BranchSeperator/Node2D"]
+position = Vector2(258, 4)
+scale = Vector2(0.599996, 0.4)
+texture = ExtResource("14_eoe7a")
+
+[node name="WoodenBranch6" type="Sprite2D" parent="BranchSeperator/Node2D"]
+position = Vector2(314, 4)
+scale = Vector2(0.599996, 0.4)
+texture = ExtResource("14_eoe7a")
+
+[node name="WoodenBranch7" type="Sprite2D" parent="BranchSeperator/Node2D"]
+position = Vector2(372, 4)
+scale = Vector2(0.599996, 0.4)
+texture = ExtResource("14_eoe7a")
+
+[node name="WoodenBranch8" type="Sprite2D" parent="BranchSeperator/Node2D"]
+position = Vector2(428, 4)
+scale = Vector2(0.599996, 0.4)
+texture = ExtResource("14_eoe7a")
+
+[node name="WoodenBranch9" type="Sprite2D" parent="BranchSeperator/Node2D"]
+position = Vector2(484, 4)
+scale = Vector2(0.599996, 0.4)
+texture = ExtResource("14_eoe7a")
+
+[node name="WoodenBranch10" type="Sprite2D" parent="BranchSeperator/Node2D"]
+position = Vector2(543.999, 4)
+scale = Vector2(0.599996, 0.4)
+texture = ExtResource("14_eoe7a")
+
+[node name="WoodenBranch11" type="Sprite2D" parent="BranchSeperator/Node2D"]
+position = Vector2(599.999, 4)
+scale = Vector2(0.599996, 0.4)
+texture = ExtResource("14_eoe7a")
+
+[node name="WoodenBranch12" type="Sprite2D" parent="BranchSeperator/Node2D"]
+position = Vector2(655.999, 4)
+scale = Vector2(0.599996, 0.4)
+texture = ExtResource("14_eoe7a")
+
+[node name="WoodenBranch13" type="Sprite2D" parent="BranchSeperator/Node2D"]
+position = Vector2(716, 4)
+scale = Vector2(0.599996, 0.4)
+texture = ExtResource("14_eoe7a")
+
+[node name="WoodenBranch14" type="Sprite2D" parent="BranchSeperator/Node2D"]
+position = Vector2(772, 4)
+scale = Vector2(0.599996, 0.4)
+texture = ExtResource("14_eoe7a")
+
+[node name="WoodenBranch15" type="Sprite2D" parent="BranchSeperator/Node2D"]
+position = Vector2(828, 4)
+scale = Vector2(0.599996, 0.4)
+texture = ExtResource("14_eoe7a")
+
+[node name="WoodenBranch16" type="Sprite2D" parent="BranchSeperator/Node2D"]
+position = Vector2(887.999, 4)
+scale = Vector2(0.599996, 0.4)
+texture = ExtResource("14_eoe7a")
+
+[node name="WoodenBranch17" type="Sprite2D" parent="BranchSeperator/Node2D"]
+position = Vector2(943.999, 4)
+scale = Vector2(0.599996, 0.4)
+texture = ExtResource("14_eoe7a")
+
+[node name="WoodenBranch18" type="Sprite2D" parent="BranchSeperator/Node2D"]
+position = Vector2(999.999, 4)
+scale = Vector2(0.599996, 0.4)
+texture = ExtResource("14_eoe7a")
+
+[node name="WoodenBranch19" type="Sprite2D" parent="BranchSeperator/Node2D"]
+position = Vector2(1058, 4)
+scale = Vector2(0.599996, 0.4)
+texture = ExtResource("14_eoe7a")
+
+[node name="WoodenBranch20" type="Sprite2D" parent="BranchSeperator/Node2D"]
+position = Vector2(1114, 4)
+scale = Vector2(0.599996, 0.4)
+texture = ExtResource("14_eoe7a")
+
+[node name="WoodenBranch21" type="Sprite2D" parent="BranchSeperator/Node2D"]
+position = Vector2(1170, 4)
+scale = Vector2(0.599996, 0.4)
+texture = ExtResource("14_eoe7a")
+
+[node name="WoodenBranch22" type="Sprite2D" parent="BranchSeperator/Node2D"]
+position = Vector2(1230, 4)
+scale = Vector2(0.599996, 0.4)
+texture = ExtResource("14_eoe7a")
+
+[node name="WoodenBranch23" type="Sprite2D" parent="BranchSeperator/Node2D"]
+position = Vector2(1286, 4)
+scale = Vector2(0.599996, 0.4)
+texture = ExtResource("14_eoe7a")
+
+[node name="WoodenBranch24" type="Sprite2D" parent="BranchSeperator/Node2D"]
+position = Vector2(1342, 4)
+scale = Vector2(0.599996, 0.4)
+texture = ExtResource("14_eoe7a")

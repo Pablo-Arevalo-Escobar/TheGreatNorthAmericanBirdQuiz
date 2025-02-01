@@ -25,9 +25,9 @@ func get_bird_data():
 		birds = read_bird_data()
 	return birds
 	
-func load_image(sprite_name):
+func load_image(img_path):
 	var image = Image.new()
-	var err = image.load("res://img/" + sprite_name)
+	var err = image.load(img_path)
 	if err != OK:
 		print("Failure")
 	var texture = ImageTexture.new()
@@ -35,22 +35,52 @@ func load_image(sprite_name):
 	return texture
 	
 func load_audio(audio_name):
-	return load("res://audio/" + audio_name) as AudioStream
+	return load(audio_name) as AudioStream
 
-func read_bird_data():
-	var file = FileAccess.open("res://birdData.json", FileAccess.READ)
+
+func read_bird_data() -> Array:
+	var birds_path = "res://birds/"
+	var birds_list = []
+	var dir = DirAccess.open(birds_path)
+
+	if dir:
+		dir.list_dir_begin()
+		var bird_folder = dir.get_next()
+		
+		while bird_folder != "":
+			var bird_data = {}
+			var bird_folder_path = birds_path + bird_folder + "/"
+
+			if DirAccess.dir_exists_absolute(bird_folder_path):
+				bird_data["name"] = bird_folder
+				bird_data["sprite"] = load_image(bird_folder_path + "sprite.png")
+				bird_data["audio"] = load_audio(bird_folder_path + "audio.mp3")
+				bird_data["area"] = load_image(bird_folder_path + "overlay.png")
+				
+				birds_list.append(bird_data)
+			
+			bird_folder = dir.get_next()
+	else:
+		print("Error: Could not open birds directory.")
+
+	return birds_list
 	
+func read_bird_datas():
+	var file = FileAccess.open("res://birdData.json", FileAccess.READ)
 	var json = JSON.new()
 	var birds_string = FileAccess.get_file_as_string("res://birdData.json")
 	var birds_dict = JSON.parse_string(birds_string)["birds"]
 	
 	for bird in birds_dict:
-		bird.sprite = load_image(bird.sprite)
+		bird.sprite = load_image("res://img/birds/" + bird.sprite)
+		bird.area = load_image("res://img/overlays/" + bird.area)
 		bird.audio = load_audio(bird.audio) 
-		bird.area = load_image(bird.area)
 		
 	return birds_dict
 
+func update() -> void:
+	display(curr_index)
+	play_audio(curr_index)
 
 func display(bird_index) -> void:
 	# Update both display's based on the bird index
@@ -72,8 +102,7 @@ func change_index(direction):
 		if curr_index < 0:
 			curr_index = len(birds)-1
 			
-	display(curr_index)
-	play_audio(curr_index)
+	update()
 	
 func play_audio(bird_index) -> void:
 	audio_player.stream = birds[bird_index].audio
@@ -98,9 +127,15 @@ func guess():
 	var bird_guess = name_list.get_item_text(name_list.get_selected_items()[0])
 	if birds[curr_index].name == bird_guess :
 		score += 1
+		# Set the text color to green
+		name_list.set_item_custom_fg_color(curr_index,Color.GREEN)
 		print("TRUE", score, "/", len(birds))
 	else:
+		# Set the text color to red
+		name_list.set_item_custom_fg_color(curr_index,Color.RED)
 		print("FALSE")
+	
+	name_list.set_item_selectable(curr_index, false)
 	
 	# Add the current index to the guessed set..
 	guessed_set[curr_index] = {}
@@ -130,6 +165,5 @@ func _ready() -> void:
 		i += 1
 		name_list.add_item(bird.name)
 		
-	display(curr_index)
-	play_audio(curr_index)
+	update()
 	update_score_view()

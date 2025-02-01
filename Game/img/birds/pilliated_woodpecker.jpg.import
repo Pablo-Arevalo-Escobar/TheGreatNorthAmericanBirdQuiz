@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btmwg5p0hjrwg"
-path="res://.godot/imported/stellars_jay.jpg-70464f60996e22afdc3450cb21bba7e6.ctex"
+uid="uid://cinib6fgb3ap0"
+path="res://.godot/imported/pilliated_woodpecker.jpg-4e9a8d499443a38645f8abd45ea615a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/stellars_jay.jpg"
-dest_files=["res://.godot/imported/stellars_jay.jpg-70464f60996e22afdc3450cb21bba7e6.ctex"]
+source_file="res://img/birds/pilliated_woodpecker.jpg"
+dest_files=["res://.godot/imported/pilliated_woodpecker.jpg-4e9a8d499443a38645f8abd45ea615a6.ctex"]
 
 [params]
 

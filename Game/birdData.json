@@ -2,14 +2,26 @@
 	"birds": [
 		{
 			"name": "Pilliated Woodpecker",
-			"audio": "PilleatedWoodpecker.mp3",
-			"sprite": "pilliated_woodpecker.jpg",
-			"area" : "PileatedWoodArea.png",
+			"audio": "pilliated_woodpecker.mp3",
+			"sprite": "pilliated_woodpecker.png",
+			"area" : "pilliated_woodpecker.png",
+		},
+		{
+			"name": "Ruby Throated Hummingbird",
+			"audio": "ruby_throated_hummingbird.mp3",
+			"sprite": "ruby_throated_hummingbird.png",
+			"area" : "ruby_throated_hummingbird.png",
+		},
+		{
+			"name": "Red Headed Woodpecker",
+			"audio": "red_headed_woodpecker.mp3",
+			"sprite": "red_headed_woodpecker.png",
+			"area" : "red_headed_woodpecker.png",
 		},
 		{
 			"name": "stellars_jay",
 			"audio": "stellers_jay.mp3",
-			"sprite": "stellars_jay.jpg",
+			"sprite": "stellars_jay.png",
 			"area" : "StellersJayArea.png",
 		}
 	]

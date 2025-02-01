@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ceraccsnbslan"]
 
 [ext_resource type="Script" path="res://scenes/audio_vis.gd" id="1_6kynl"]
-[ext_resource type="AudioStream" uid="uid://sg5m53hvdat1" path="res://audio/PilleatedWoodpecker.mp3" id="1_g46fg"]
+[ext_resource type="AudioStream" uid="uid://sg5m53hvdat1" path="res://audio/pilliated_woodpecker.mp3" id="1_g46fg"]
 
 [node name="ShowSpectrum" type="Node2D"]
 position = Vector2(136, 80)
@@ -13,3 +13,12 @@ stream = ExtResource("1_g46fg")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 144)
 offset = Vector2(440, 100)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -2
+offset_left = -136.0
+offset_top = -80.0
+offset_right = -96.0
+offset_bottom = -40.0
+scale = Vector2(28.7907, 16.1901)
+color = Color(0.129412, 0.184314, 0.376471, 1)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0vjkt51quvmj"
-path="res://.godot/imported/StellersJayArea.png-35442706893f90d757829f540d6932fe.ctex"
+uid="uid://c6q2qsybv7gwx"
+path="res://.godot/imported/sprite.png-44b14a0371faca230f6dad4501b6bf1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/StellersJayArea.png"
-dest_files=["res://.godot/imported/StellersJayArea.png-35442706893f90d757829f540d6932fe.ctex"]
+source_file="res://birds/ruby_throated_hummingbird/sprite.png"
+dest_files=["res://.godot/imported/sprite.png-44b14a0371faca230f6dad4501b6bf1d.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://db51msohtalmk"
-path="res://.godot/imported/PileatedWoodArea.png-3c04ea4b2a49ea957d93846123e19aef.ctex"
+uid="uid://bstpm854regma"
+path="res://.godot/imported/overlay.png-5bf5015aa8ef2d2587ba5069883a029f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/PileatedWoodArea.png"
-dest_files=["res://.godot/imported/PileatedWoodArea.png-3c04ea4b2a49ea957d93846123e19aef.ctex"]
+source_file="res://birds/ruby_throated_hummingbird/overlay.png"
+dest_files=["res://.godot/imported/overlay.png-5bf5015aa8ef2d2587ba5069883a029f.ctex"]
 
 [params]
 

@@ -8,5 +8,5 @@ func update(bird) -> void:
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	display = self.get_child(0)
+	display = self.get_node("Display")
 	pass # Replace with function body.
