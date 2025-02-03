@@ -151,7 +151,7 @@ func _ready() -> void:
 	bird_view = $BirdView
 	score_view = $ScoreView
 	
-	audio_player = bird_view.get_node("SubViewportContainer/SubViewport/ShowSpectrum/AudioStreamPlayer")
+	audio_player = bird_view.get_node("AudioView/SubViewport/ShowSpectrum/AudioStreamPlayer")
 	
 	# Subscribe to the buttons 
 	score_view.button_right.pressed.connect(self.change_index.bind(1))

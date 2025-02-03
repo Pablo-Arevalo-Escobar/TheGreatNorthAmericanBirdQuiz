@@ -7,7 +7,7 @@ var map_overlay : Sprite2D
 func update(bird) -> void:
 	print("Map View : ", bird)
 	map_overlay.texture = bird.area
-	map_overlay.modulate =  Color(randf(), randf(), randf(), 0.6)
+	map_overlay.modulate =  Color(max(randf(), 0.5), 0.0, max(randf(), 0.5), 0.55)
 	pass 
 	
 # Called when the node enters the scene tree for the first time.

@@ -13,6 +13,7 @@ stream = ExtResource("1_g46fg")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 144)
 offset = Vector2(440, 100)
+zoom = Vector2(0.4, 0.4)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -2
@@ -21,4 +22,4 @@ offset_top = -80.0
 offset_right = -96.0
 offset_bottom = -40.0
 scale = Vector2(28.7907, 16.1901)
-color = Color(0.129412, 0.184314, 0.376471, 1)
+color = Color(0.0784314, 0.117647, 0.254902, 1)
