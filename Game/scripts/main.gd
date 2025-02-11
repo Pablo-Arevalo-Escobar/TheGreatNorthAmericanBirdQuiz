@@ -63,6 +63,7 @@ func read_bird_data() -> Array:
 	else:
 		print("Error: Could not open birds directory.")
 
+	birds_list.shuffle()
 	return birds_list
 	
 func read_bird_datas():
@@ -79,8 +80,8 @@ func read_bird_datas():
 	return birds_dict
 
 func update() -> void:
+	play_audio()
 	display(curr_index)
-	play_audio(curr_index)
 
 func display(bird_index) -> void:
 	# Update both display's based on the bird index
@@ -104,15 +105,21 @@ func change_index(direction):
 			
 	update()
 	
-func play_audio(bird_index) -> void:
-	audio_player.stream = birds[bird_index].audio
-	audio_player.play(0)
+func play_audio() -> void:
+	audio_player.stream = birds[curr_index].audio
+	#audio_player.play()
+func pause_audio() -> void:
 	pass
+	#audio_player.stop()
 	
 func _input(event):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_ENTER or event.keycode == KEY_KP_ENTER:
 			guess()
+		elif event.keycode == KEY_E:
+			change_index(1)
+		elif event.keycode == KEY_Q:
+			change_index(-1)
 
 # Checks if the currently selected bird matches the guess
 func guess():
@@ -151,11 +158,13 @@ func _ready() -> void:
 	bird_view = $BirdView
 	score_view = $ScoreView
 	
-	audio_player = bird_view.get_node("AudioView/SubViewport/ShowSpectrum/AudioStreamPlayer")
+	audio_player = bird_view.get_node("MusicPlayer/AudioStreamPlayer")
 	
 	# Subscribe to the buttons 
 	score_view.button_right.pressed.connect(self.change_index.bind(1))
 	score_view.button_left.pressed.connect(self.change_index.bind(-1))
+	#SignalBus.play_event.connect(play_audio)
+	#SignalBus.pause_event.connect(pause_audio)
 	
 	# Initialize the name list
 	birds = get_bird_data()

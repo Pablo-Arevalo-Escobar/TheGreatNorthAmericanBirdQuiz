@@ -1,0 +1,31 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://47cbwwryiequ"]
+
+[ext_resource type="Texture2D" uid="uid://dbjxff6dxoemj" path="res://buttons_sheet.png" id="1_0yad0"]
+[ext_resource type="Texture2D" uid="uid://bp565y0ny1824" path="res://buttons_sheet-Sheet.png" id="2_hdyq8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4acty"]
+atlas = ExtResource("2_hdyq8")
+region = Rect2(77, 0, 70, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5st42"]
+atlas = ExtResource("1_0yad0")
+region = Rect2(0, 0, 70, 80)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4acty")
+}],
+"loop": true,
+"name": &"Pressed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5st42")
+}],
+"loop": true,
+"name": &"Rest",
+"speed": 1.0
+}]

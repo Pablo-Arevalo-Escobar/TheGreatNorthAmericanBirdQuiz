@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bu7hmoo67h5ue"]
+[gd_scene load_steps=40 format=3 uid="uid://bu7hmoo67h5ue"]
 
 [ext_resource type="StyleBox" uid="uid://bi477umofjmp0" path="res://new_style_box_flat.tres" id="1_1cpmh"]
 [ext_resource type="FontFile" uid="uid://vmgqtg0bm3b2" path="res://img/chars.webp" id="1_1lwqi"]
@@ -11,30 +11,141 @@
 [ext_resource type="Texture2D" uid="uid://booxxwmy5eg2d" path="res://img/birds/pilliated_woodpecker.png" id="6_gnofl"]
 [ext_resource type="PackedScene" uid="uid://ceraccsnbslan" path="res://scenes/audio_vis.tscn" id="6_iolxi"]
 [ext_resource type="Script" path="res://scripts/score_view.gd" id="7_4k3he"]
-[ext_resource type="Shader" path="res://scenes/circle.gdshader" id="10_s7q5a"]
 [ext_resource type="Shader" path="res://scenes/main.gdshader" id="10_utg7s"]
+[ext_resource type="Shader" path="res://scenes/retro_screen_lines.gdshader" id="12_3lg4t"]
+[ext_resource type="Script" path="res://scenes/music_player.gd" id="13_8hwmc"]
+[ext_resource type="Texture2D" uid="uid://cys6flc34m7y4" path="res://cassette_player-Sheet.png" id="13_hg03g"]
+[ext_resource type="Texture2D" uid="uid://dvl1lcc7u06de" path="res://cassette_player.png" id="13_ye4il"]
+[ext_resource type="SpriteFrames" uid="uid://47cbwwryiequ" path="res://scenes/button.tres" id="14_7u1o1"]
 [ext_resource type="Texture2D" uid="uid://dodq2rkp180w" path="res://img/other/WoodenBranch.png" id="14_eoe7a"]
+[ext_resource type="Script" path="res://scenes/button.gd" id="14_oqfmc"]
+[ext_resource type="Script" path="res://button_manager.gd" id="14_s2mg4"]
+[ext_resource type="Script" path="res://scenes/casette_player.gd" id="15_7h7r4"]
+[ext_resource type="SpriteFrames" uid="uid://bikidjibimgpa" path="res://scenes/buttons.tres" id="15_eu80p"]
+[ext_resource type="AudioStream" uid="uid://sg5m53hvdat1" path="res://audio/pilliated_woodpecker.mp3" id="19_x36q4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_podar"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.225, 0.225, 0.225, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [sub_resource type="Theme" id="Theme_l07h1"]
 default_font = ExtResource("1_1lwqi")
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 16
 Button/styles/disabled = ExtResource("1_1cpmh")
 Button/styles/focus = ExtResource("1_1cpmh")
+Button/styles/hover = SubResource("StyleBoxFlat_podar")
 Button/styles/normal = ExtResource("1_1cpmh")
 Button/styles/pressed = ExtResource("1_1cpmh")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_krbp5"]
 shader = ExtResource("10_utg7s")
 
+[sub_resource type="Gradient" id="Gradient_yl76g"]
+offsets = PackedFloat32Array(0.00440529, 0.497797, 0.991189)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qmdwu"]
+gradient = SubResource("Gradient_yl76g")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4p5bn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1onre"]
-shader = ExtResource("10_s7q5a")
-shader_parameter/height = 0.8
-shader_parameter/width = 0.7
+shader = ExtResource("12_3lg4t")
+shader_parameter/lineCount = 2960
+shader_parameter/darknessMult = 0.298
+shader_parameter/timeSpeed = 6.5
+shader_parameter/color = Vector4(0, 10, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_vp2mh"]
+interpolation_mode = 2
+colors = PackedColorArray(2.21401e-06, 0.980761, 0.392632, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3bikq"]
+gradient = SubResource("Gradient_vp2mh")
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.482906, 0.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wa0vt"]
+atlas = ExtResource("13_hg03g")
+region = Rect2(0, 0, 278, 179)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kea6q"]
+atlas = ExtResource("13_hg03g")
+region = Rect2(278, 0, 278, 179)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jux56"]
+atlas = ExtResource("13_hg03g")
+region = Rect2(556, 0, 278, 179)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rig3l"]
+atlas = ExtResource("13_hg03g")
+region = Rect2(834, 0, 278, 179)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbiyf"]
+atlas = ExtResource("13_hg03g")
+region = Rect2(1112, 0, 278, 179)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtxmu"]
+atlas = ExtResource("13_hg03g")
+region = Rect2(1390, 0, 278, 179)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fjh14"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wa0vt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kea6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jux56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rig3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbiyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtxmu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Main" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
+scale = Vector2(1.66, 1.66)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource("Theme_l07h1")
@@ -52,7 +163,8 @@ script = ExtResource("2_k0eok")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="MapView"]
 layout_mode = 0
-offset_right = 640.0
+offset_left = -7.40741
+offset_right = 632.593
 offset_bottom = 360.0
 
 [node name="SubViewport" type="SubViewport" parent="MapView/SubViewportContainer"]
@@ -84,15 +196,16 @@ offset_bottom = 648.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="MapBackground" type="ColorRect" parent="MapView"]
-z_index = -1
-layout_mode = 0
-offset_top = -8.0
-offset_right = 640.0
-scale = Vector2(1, 45.8506)
-color = Color(0.00184107, 0.00184107, 0.00184107, 1)
+[node name="PointLight2D" type="PointLight2D" parent="MapView/SubViewportContainer"]
+z_index = 2
+position = Vector2(325.926, 248.276)
+scale = Vector2(11.9506, 12.4278)
+energy = 1.34
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_qmdwu")
 
 [node name="BranchSeperator" type="Control" parent="MapView"]
+visible = false
 anchors_preset = 0
 offset_top = -64.0
 offset_right = 40.0
@@ -399,35 +512,20 @@ texture = ExtResource("14_eoe7a")
 [node name="BirdView" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 699.0
-offset_top = 16.0
-offset_right = 1211.0
-offset_bottom = 376.0
+offset_left = 698.795
+offset_top = 4.21687
+offset_right = 1210.8
+offset_bottom = 364.217
 scale = Vector2(0.880002, 1.24)
 script = ExtResource("4_ps23l")
 
-[node name="AudioView" type="SubViewportContainer" parent="BirdView"]
-layout_mode = 0
-offset_left = 69.318
-offset_top = 232.258
-offset_right = 453.318
-offset_bottom = 332.258
-scale = Vector2(1, 2.03226)
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="BirdView/AudioView"]
-disable_3d = true
-handle_input_locally = false
-size = Vector2i(384, 100)
-render_target_update_mode = 4
-
-[node name="ShowSpectrum" parent="BirdView/AudioView/SubViewport" instance=ExtResource("6_iolxi")]
-
 [node name="BirdView" type="Control" parent="BirdView"]
 anchors_preset = 0
-offset_top = -19.3548
-offset_right = 40.0
-offset_bottom = 20.6452
+offset_left = 87.4998
+offset_top = 6.45161
+offset_right = 127.5
+offset_bottom = 46.4516
+scale = Vector2(0.679737, 0.679737)
 
 [node name="Display" type="Sprite2D" parent="BirdView/BirdView"]
 material = SubResource("ShaderMaterial_4p5bn")
@@ -436,15 +534,202 @@ scale = Vector2(3, 3)
 texture = ExtResource("6_gnofl")
 
 [node name="ColorRect" type="ColorRect" parent="BirdView/BirdView"]
-z_index = -1
 material = SubResource("ShaderMaterial_1onre")
 layout_mode = 0
-offset_left = 48.0
-offset_top = 8.0
-offset_right = 88.0
-offset_bottom = 48.0
-scale = Vector2(9.81589, 6.4)
-color = Color(0, 0.0522597, 0.169599, 0)
+offset_top = 18.9827
+offset_right = 40.0
+offset_bottom = 58.9827
+scale = Vector2(12.7797, 5.68192)
+
+[node name="DisplayFrame" type="Sprite2D" parent="BirdView/BirdView"]
+position = Vector2(247.421, 132.879)
+scale = Vector2(2.04638, 1.79023)
+texture = ExtResource("13_ye4il")
+
+[node name="PointLight2D" type="PointLight2D" parent="BirdView/BirdView/DisplayFrame"]
+position = Vector2(9.80338, -0.000151634)
+scale = Vector2(6.02073, 3.26547)
+energy = 1.68
+texture = SubResource("GradientTexture2D_3bikq")
+
+[node name="Back" type="ColorRect" parent="BirdView"]
+z_index = -1
+layout_mode = 0
+offset_left = -8.35638e-05
+offset_top = -3.88651
+offset_right = 39.9999
+offset_bottom = 36.1135
+scale = Vector2(12.9545, 13.3548)
+color = Color(0.152605, 0.131128, 0.39204, 1)
+
+[node name="MusicPlayer" type="Control" parent="BirdView"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("13_8hwmc")
+
+[node name="CasettePlayer" type="AnimatedSprite2D" parent="BirdView/MusicPlayer"]
+position = Vector2(260.227, 303.226)
+scale = Vector2(1.49522, 1.06113)
+sprite_frames = SubResource("SpriteFrames_fjh14")
+autoplay = "default"
+frame_progress = 0.175581
+script = ExtResource("15_7h7r4")
+
+[node name="Control" type="Control" parent="BirdView/MusicPlayer"]
+texture_filter = 3
+anchors_preset = 0
+offset_left = 162.239
+offset_top = 439.662
+offset_right = 202.239
+offset_bottom = 479.662
+scale = Vector2(0.6, 0.6)
+script = ExtResource("14_s2mg4")
+
+[node name="Play" type="Control" parent="BirdView/MusicPlayer/Control"]
+anchors_preset = 0
+offset_left = -62.199
+offset_top = -42.3396
+offset_right = -22.199
+offset_bottom = -2.33964
+scale = Vector2(2.53754, 2.04498)
+script = ExtResource("14_oqfmc")
+
+[node name="button" type="AnimatedSprite2D" parent="BirdView/MusicPlayer/Control/Play"]
+position = Vector2(20.5096, 20.7042)
+scale = Vector2(0.589239, 0.518894)
+sprite_frames = ExtResource("14_7u1o1")
+animation = &"Rest"
+autoplay = "Rest"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BirdView/MusicPlayer/Control/Play"]
+texture_filter = 3
+position = Vector2(20.5096, 20.7042)
+scale = Vector2(0.188399, 0.233778)
+sprite_frames = ExtResource("15_eu80p")
+animation = &"buttons"
+
+[node name="Overlay" type="ColorRect" parent="BirdView/MusicPlayer/Control/Play"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+color = Color(1, 0.386493, 0.545584, 0.0980392)
+
+[node name="Rewind" type="Control" parent="BirdView/MusicPlayer/Control"]
+anchors_preset = 0
+offset_left = 50.7747
+offset_top = -42.3396
+offset_right = 90.7747
+offset_bottom = -2.33963
+scale = Vector2(2.51209, 2.07364)
+script = ExtResource("14_oqfmc")
+
+[node name="button" type="AnimatedSprite2D" parent="BirdView/MusicPlayer/Control/Rewind"]
+position = Vector2(20.5822, 20.4181)
+scale = Vector2(0.59521, 0.511722)
+sprite_frames = ExtResource("14_7u1o1")
+animation = &"Rest"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="BirdView/MusicPlayer/Control/Rewind"]
+position = Vector2(20.2122, 20.418)
+scale = Vector2(0.190308, 0.230547)
+sprite_frames = ExtResource("15_eu80p")
+animation = &"buttons"
+frame = 2
+frame_progress = 0.827205
+
+[node name="Overlay" type="ColorRect" parent="BirdView/MusicPlayer/Control/Rewind"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+color = Color(1, 0.386493, 0.545584, 0.0980392)
+
+[node name="Forward" type="Control" parent="BirdView/MusicPlayer/Control"]
+anchors_preset = 0
+offset_left = 162.479
+offset_top = -42.3396
+offset_right = 202.479
+offset_bottom = -2.33964
+scale = Vector2(2.52324, 2.04498)
+script = ExtResource("14_oqfmc")
+
+[node name="button" type="AnimatedSprite2D" parent="BirdView/MusicPlayer/Control/Forward"]
+position = Vector2(20.8597, 20.7042)
+scale = Vector2(0.592579, 0.518894)
+sprite_frames = ExtResource("14_7u1o1")
+animation = &"Rest"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BirdView/MusicPlayer/Control/Forward"]
+position = Vector2(23.6443, 20.7042)
+scale = Vector2(0.189467, 0.233778)
+sprite_frames = ExtResource("15_eu80p")
+animation = &"buttons"
+frame = 3
+frame_progress = 0.0401167
+
+[node name="Overlay" type="ColorRect" parent="BirdView/MusicPlayer/Control/Forward"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+color = Color(1, 0.386493, 0.545584, 0.0980392)
+
+[node name="Pause" type="Control" parent="BirdView/MusicPlayer/Control"]
+anchors_preset = 0
+offset_left = 275.453
+offset_top = -42.3396
+offset_right = 315.453
+offset_bottom = -2.33964
+scale = Vector2(2.52327, 2.04497)
+script = ExtResource("14_oqfmc")
+
+[node name="button" type="AnimatedSprite2D" parent="BirdView/MusicPlayer/Control/Pause"]
+position = Vector2(20.7249, 20.7043)
+scale = Vector2(0.592573, 0.518895)
+sprite_frames = ExtResource("14_7u1o1")
+animation = &"Rest"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BirdView/MusicPlayer/Control/Pause"]
+position = Vector2(19.6195, 20.7043)
+scale = Vector2(0.189465, 0.233779)
+sprite_frames = ExtResource("15_eu80p")
+animation = &"buttons"
+frame = 1
+frame_progress = 0.127942
+
+[node name="Overlay" type="ColorRect" parent="BirdView/MusicPlayer/Control/Pause"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+color = Color(1, 0.386493, 0.545584, 0.0980392)
+
+[node name="AudioView" type="SubViewportContainer" parent="BirdView/MusicPlayer"]
+z_index = 1
+layout_mode = 0
+offset_left = 210.159
+offset_top = 288.088
+offset_right = 404.159
+offset_bottom = 317.088
+scale = Vector2(0.445776, 1.15306)
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="BirdView/MusicPlayer/AudioView"]
+disable_3d = true
+handle_input_locally = false
+size = Vector2i(194, 29)
+render_target_update_mode = 4
+
+[node name="ShowSpectrum" parent="BirdView/MusicPlayer/AudioView/SubViewport" instance=ExtResource("6_iolxi")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BirdView/MusicPlayer"]
+stream = ExtResource("19_x36q4")
 
 [node name="NameView" type="Control" parent="."]
 layout_mode = 3
@@ -457,12 +742,13 @@ script = ExtResource("6_2yjx1")
 [node name="ItemList" type="ItemList" parent="NameView"]
 layout_mode = 0
 offset_top = -16.0
-offset_right = 695.029
-offset_bottom = 227.655
+offset_right = 688.464
+offset_bottom = 200.995
 scale = Vector2(1.011, 0.967275)
 focus_mode = 0
 
 [node name="Right" type="Node2D" parent="NameView"]
+visible = false
 position = Vector2(699, -16)
 rotation = 1.57079
 scale = Vector2(0.465, 0.72)
@@ -515,47 +801,62 @@ texture = ExtResource("14_eoe7a")
 [node name="ScoreView" type="Control" parent="."]
 z_index = -1
 anchors_preset = 0
-offset_left = 699.0
-offset_top = 512.0
-offset_right = 739.0
-offset_bottom = 552.0
-scale = Vector2(1, 0.995941)
+offset_left = 770.482
+offset_top = -120.482
+offset_right = 810.482
+offset_bottom = -80.4819
+scale = Vector2(0.650973, 0.615801)
 script = ExtResource("7_4k3he")
 
 [node name="Score" type="RichTextLabel" parent="ScoreView"]
 custom_minimum_size = Vector2(36.165, 0)
 layout_mode = 0
-offset_left = 149.0
-offset_top = 88.3586
-offset_right = 276.06
-offset_bottom = 128.359
+offset_left = 148.795
+offset_right = 275.855
+offset_bottom = 40.0004
 theme_override_font_sizes/normal_font_size = 40
 text = "10 / 0"
 scroll_active = false
 
 [node name="Left" type="Button" parent="ScoreView"]
 layout_mode = 0
-offset_left = 21.0
-offset_top = 96.3913
-offset_right = 93.0
-offset_bottom = 120.391
+offset_left = 1.80724
+offset_top = 4.23405
+offset_right = 73.8072
+offset_bottom = 28.2341
 scale = Vector2(1.48612, 1.48612)
 text = "Left"
 
 [node name="Right" type="Button" parent="ScoreView"]
 layout_mode = 0
-offset_left = 311.0
-offset_top = 88.3587
-offset_right = 399.0
-offset_bottom = 119.359
-scale = Vector2(1.48612, 1.48612)
+offset_left = 321.687
+offset_right = 409.687
+offset_bottom = 31.0003
+scale = Vector2(1.48612, 1.17159)
 text = "Right"
 
 [node name="Background" type="ColorRect" parent="."]
 z_index = -3
 layout_mode = 0
+offset_top = -0.602411
 offset_right = 1152.0
-offset_bottom = 64.0
+offset_bottom = 63.3976
 scale = Vector2(1, 10.36)
 mouse_filter = 2
-color = Color(0.0772519, 0.118019, 0.25662, 1)
+color = Color(0, 0, 0, 1)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.412152, 0.412152, 0.412152, 1)
+
+[connection signal="gui_input" from="BirdView/MusicPlayer/Control/Play" to="BirdView/MusicPlayer/Control/Play" method="_on_gui_input"]
+[connection signal="mouse_entered" from="BirdView/MusicPlayer/Control/Play" to="BirdView/MusicPlayer/Control/Play" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BirdView/MusicPlayer/Control/Play" to="BirdView/MusicPlayer/Control/Play" method="_on_mouse_exited"]
+[connection signal="gui_input" from="BirdView/MusicPlayer/Control/Rewind" to="BirdView/MusicPlayer/Control/Rewind" method="_on_gui_input"]
+[connection signal="mouse_entered" from="BirdView/MusicPlayer/Control/Rewind" to="BirdView/MusicPlayer/Control/Rewind" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BirdView/MusicPlayer/Control/Rewind" to="BirdView/MusicPlayer/Control/Rewind" method="_on_mouse_exited"]
+[connection signal="gui_input" from="BirdView/MusicPlayer/Control/Forward" to="BirdView/MusicPlayer/Control/Forward" method="_on_gui_input"]
+[connection signal="mouse_entered" from="BirdView/MusicPlayer/Control/Forward" to="BirdView/MusicPlayer/Control/Forward" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BirdView/MusicPlayer/Control/Forward" to="BirdView/MusicPlayer/Control/Forward" method="_on_mouse_exited"]
+[connection signal="gui_input" from="BirdView/MusicPlayer/Control/Pause" to="BirdView/MusicPlayer/Control/Pause" method="_on_gui_input"]
+[connection signal="mouse_entered" from="BirdView/MusicPlayer/Control/Pause" to="BirdView/MusicPlayer/Control/Pause" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BirdView/MusicPlayer/Control/Pause" to="BirdView/MusicPlayer/Control/Pause" method="_on_mouse_exited"]

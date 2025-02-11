@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://bikidjibimgpa"]
+
+[ext_resource type="Texture2D" uid="uid://bfaw1213hxg2k" path="res://cassette_player-buttons.png" id="1_usgir"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7wj5"]
+atlas = ExtResource("1_usgir")
+region = Rect2(73, 0, 68, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvesh"]
+atlas = ExtResource("1_usgir")
+region = Rect2(5, 0, 68, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkoib"]
+atlas = ExtResource("1_usgir")
+region = Rect2(228, 0, 92, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jm38"]
+atlas = ExtResource("1_usgir")
+region = Rect2(136, 0, 92, 96)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7wj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvesh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkoib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jm38")
+}],
+"loop": true,
+"name": &"buttons",
+"speed": 5.0
+}]
