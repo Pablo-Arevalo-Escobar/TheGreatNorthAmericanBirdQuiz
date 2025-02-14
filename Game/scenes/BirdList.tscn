@@ -7,5 +7,12 @@ scale = Vector2(1, 1.00489)
 script = ExtResource("1_ahmav")
 
 [node name="ItemList" type="ItemList" parent="."]
+visible = false
 offset_right = 1150.0
 offset_bottom = 650.0
+scale = Vector2(1, 1.02135)
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_right = 1150.0
+offset_bottom = 650.0
+text = "sdsadsadasdsadasdsadsadasdas"

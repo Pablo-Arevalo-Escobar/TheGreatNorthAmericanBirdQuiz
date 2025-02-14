@@ -7,7 +7,7 @@ func _ready() -> void:
 	SignalBus.pause_event.connect(pause_cassete)
 	SignalBus.forward_event.connect(forward_cassete)
 	SignalBus.rewind_event.connect(reverse_cassete)
-	pass # Replace with function body.
+	SignalBus.bird_changed.connect(pause_cassete)
 
 func play_cassete() -> void:
 	play("default",1.0)

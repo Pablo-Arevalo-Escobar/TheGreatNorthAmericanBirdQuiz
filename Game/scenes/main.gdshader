@@ -1,13 +1,14 @@
 // Based on: https://www.shadertoy.com/view/Ms23DR
 shader_type canvas_item;
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
+uniform int is_on : hint_range(0, 1); // Simulating a bool
 
 // Loosely based on postprocessing shader by inigo quilez, License Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
 
 vec2 curve(vec2 uv)
 {
 	uv = (uv - 0.5) * 2.0;
-	uv *= 1.1;	
+	uv *= 1.1;
 	uv.x *= 1.0 + pow((abs(uv.y) / 5.0), 2.0);
 	uv.y *= 1.0 + pow((abs(uv.x) / 4.0), 2.0);
 	uv  = (uv / 2.0) + 0.5;
@@ -38,22 +39,22 @@ void fragment(  )
 
     col *= vec3(0.95,1.05,0.95);
 	col *= 2.8;
-
-	float scans = clamp( 0.35+0.35*sin(3.5*TIME+uv.y*iResolution.y*1.5), 0.0, 1.0);
-	
-	float s = pow(scans,1.7);
-	col = col*vec3( 0.4+0.7*s) ;
-
-    col *= 1.0+0.01*sin(110.0*TIME);
 	if (uv.x < 0.0 || uv.x > 1.0)
 		col *= 0.0;
 	if (uv.y < 0.0 || uv.y > 1.0)
 		col *= 0.0;
-	
-	col*=1.0-0.65*vec3(clamp((mod(FRAGCOORD.x, 2.0)-1.0)*2.0,0.0,1.0));
-	
-    float comp = smoothstep( 0.1, 0.9, sin(TIME) );
- 
-
     COLOR = vec4(col,1.0);
+
+	if (is_on == 1)
+	{
+		float scans = clamp( 0.35+0.35*sin(3.5*TIME+uv.y*iResolution.y*1.5), 0.0, 1.0);
+		float s = pow(scans,1.7);
+		col = col*vec3( 0.4+0.7*s) ;
+	    col *= 1.0+0.01*sin(110.0*TIME);
+
+		col*=1.0-0.65*vec3(clamp((mod(FRAGCOORD.x, 2.0)-1.0)*2.0,0.0,1.0));
+	    float comp = smoothstep( 0.1, 0.9, sin(TIME) );
+	    COLOR = vec4(col,1.0);
+	}
+
 }

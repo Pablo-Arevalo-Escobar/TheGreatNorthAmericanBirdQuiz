@@ -13,7 +13,7 @@ const ANIMATION_SPEED = 0.1
 var spectrum
 var min_values = []
 var max_values = []
-
+@export var stream_player : AudioStreamPlayer
 
 func _draw():
 	var w = WIDTH / VU_COUNT
@@ -53,9 +53,15 @@ func _draw():
 
 
 func _process(_delta):
+	if !stream_player.playing:
+		for i in range(VU_COUNT):
+			max_values[i] = 0.0
+			min_values[i] = 0.0
+			queue_redraw()
+		return
+		
 	var data = []
 	var prev_hz = 0
-
 	for i in range(1, VU_COUNT + 1):
 		var hz = i * FREQ_MAX / VU_COUNT
 		var magnitude = spectrum.get_magnitude_for_frequency_range(prev_hz, hz).length()
@@ -78,7 +84,8 @@ func _process(_delta):
 
 
 func _ready():
-	spectrum = AudioServer.get_bus_effect_instance(0, 0)
+	var bus_index : int = AudioServer.get_bus_index("Music")
+	spectrum = AudioServer.get_bus_effect_instance(bus_index, 0)
 	min_values.resize(VU_COUNT)
 	max_values.resize(VU_COUNT)
 	min_values.fill(0.0)

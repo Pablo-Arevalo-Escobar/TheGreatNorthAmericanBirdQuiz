@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bu7hmoo67h5ue"]
+[gd_scene load_steps=44 format=3 uid="uid://bu7hmoo67h5ue"]
 
 [ext_resource type="StyleBox" uid="uid://bi477umofjmp0" path="res://new_style_box_flat.tres" id="1_1cpmh"]
 [ext_resource type="FontFile" uid="uid://vmgqtg0bm3b2" path="res://img/chars.webp" id="1_1lwqi"]
@@ -11,14 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://booxxwmy5eg2d" path="res://img/birds/pilliated_woodpecker.png" id="6_gnofl"]
 [ext_resource type="PackedScene" uid="uid://ceraccsnbslan" path="res://scenes/audio_vis.tscn" id="6_iolxi"]
 [ext_resource type="Script" path="res://scripts/score_view.gd" id="7_4k3he"]
-[ext_resource type="AudioStream" uid="uid://cs15qwnvdl8ec" path="res://audio/bbc_tv-static-_0010006/0010006.wav" id="9_tn1cf"]
 [ext_resource type="Shader" path="res://scenes/main.gdshader" id="10_utg7s"]
-[ext_resource type="Texture2D" uid="uid://5ijg0s21cx6c" path="res://secret/Clara/sprite.png" id="10_w50eo"]
 [ext_resource type="Shader" path="res://scenes/retro_screen_lines.gdshader" id="12_3lg4t"]
-[ext_resource type="Texture2D" uid="uid://dvyfq0jej6m20" path="res://img/sad.png" id="12_b1tob"]
 [ext_resource type="Script" path="res://scenes/music_player.gd" id="13_8hwmc"]
 [ext_resource type="Texture2D" uid="uid://cys6flc34m7y4" path="res://cassette_player-Sheet.png" id="13_hg03g"]
-[ext_resource type="Texture2D" uid="uid://cb46pyj74hfl" path="res://img/kawaii.png" id="13_ybh1a"]
 [ext_resource type="Texture2D" uid="uid://dvl1lcc7u06de" path="res://cassette_player.png" id="13_ye4il"]
 [ext_resource type="SpriteFrames" uid="uid://47cbwwryiequ" path="res://scenes/button.tres" id="14_7u1o1"]
 [ext_resource type="Texture2D" uid="uid://dodq2rkp180w" path="res://img/other/WoodenBranch.png" id="14_eoe7a"]
@@ -26,16 +22,11 @@
 [ext_resource type="Script" path="res://button_manager.gd" id="14_s2mg4"]
 [ext_resource type="Script" path="res://scenes/casette_player.gd" id="15_7h7r4"]
 [ext_resource type="SpriteFrames" uid="uid://bikidjibimgpa" path="res://scenes/buttons.tres" id="15_eu80p"]
-[ext_resource type="AudioStream" uid="uid://bwebr6lpg8tyy" path="res://secret/Clara/audio.mp3" id="16_w6jou"]
 [ext_resource type="AudioStream" uid="uid://1v05uppnw7ks" path="res://audio/UI_Mechanical_Move_40.wav" id="20_pj2xu"]
 [ext_resource type="PackedScene" uid="uid://dmnnl78mhbf44" path="res://switch.tscn" id="24_i8dm6"]
 [ext_resource type="Texture2D" uid="uid://cqetk5y0p0vsr" path="res://note_map.png" id="25_koemu"]
-[ext_resource type="AudioStream" uid="uid://bxevxvn13v33h" path="res://audio/retro/Retro_Single_v4_wav.wav" id="26_oy7ms"]
 [ext_resource type="Texture2D" uid="uid://ceyl6tfq3diei" path="res://note_bird.png" id="26_wsdxs"]
 [ext_resource type="Texture2D" uid="uid://cfj3dgy3pys75" path="res://note_question.png" id="27_rwc0x"]
-[ext_resource type="AudioStream" uid="uid://c2n5ntgvvrqx3" path="res://audio/wrong.wav" id="32_er5xc"]
-[ext_resource type="AudioStream" uid="uid://ctwr0y14qhjpn" path="res://audio/good.wav" id="33_qppd5"]
-[ext_resource type="AudioStream" uid="uid://cuas5pmom7ai3" path="res://audio/tv-static-noise-291374.wav" id="36_i7i3d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_podar"]
 content_margin_left = 4.0
@@ -158,49 +149,22 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uy8tw"]
-playback_mode = 1
-random_pitch = 1.5
-streams_count = 1
-stream_0/stream = ExtResource("26_oy7ms")
-
-[sub_resource type="Gradient" id="Gradient_0vprg"]
-offsets = PackedFloat32Array(0.605516)
-colors = PackedColorArray(1, 1, 1, 0.431373)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_eowna"]
-gradient = SubResource("Gradient_0vprg")
-fill_from = Vector2(0.551282, 0.401709)
-
 [node name="Main" type="Control"]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
-offset_left = 8.0
-offset_right = 8.0
-scale = Vector2(1.64, 1.66)
+scale = Vector2(1.66, 1.66)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource("Theme_l07h1")
 script = ExtResource("1_po646")
 
-[node name="BackGround2" type="ColorRect" parent="."]
-light_mask = 0
-z_index = -3
-layout_mode = 0
-offset_left = 1128.13
-offset_top = -6.62651
-offset_right = 1168.13
-offset_bottom = 33.3735
-scale = Vector2(2.15, 16.9759)
-color = Color(0.092397, 0.0923971, 0.092397, 1)
-
 [node name="MapView" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 1.822
+offset_left = 8.0
 offset_top = 16.0
-offset_right = 41.822
+offset_right = 48.0
 offset_bottom = 56.0
 scale = Vector2(1.08, 1.16)
 script = ExtResource("2_k0eok")
@@ -553,23 +517,15 @@ position = Vector2(772, 4)
 scale = Vector2(0.599996, 0.4)
 texture = ExtResource("14_eoe7a")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MapView"]
-stream = ExtResource("9_tn1cf")
-volume_db = -35.0
-pitch_scale = 0.07
-
 [node name="BirdView" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 698.834
+offset_left = 698.795
 offset_top = 4.21687
-offset_right = 1210.84
+offset_right = 1210.8
 offset_bottom = 364.217
 scale = Vector2(0.880002, 1.24)
 script = ExtResource("4_ps23l")
-secret_texture = ExtResource("10_w50eo")
-fail_texture = ExtResource("12_b1tob")
-win_texture = ExtResource("13_ybh1a")
 
 [node name="BirdView" type="Control" parent="BirdView"]
 anchors_preset = 0
@@ -667,7 +623,6 @@ offset_top = 200.0
 offset_right = 90.657
 offset_bottom = 240.0
 script = ExtResource("13_8hwmc")
-secret_audio = ExtResource("16_w6jou")
 
 [node name="CasettePlayer" type="AnimatedSprite2D" parent="BirdView/MusicPlayer"]
 position = Vector2(203.997, 76.2728)
@@ -828,25 +783,19 @@ handle_input_locally = false
 size = Vector2i(194, 29)
 render_target_update_mode = 4
 
-[node name="ShowSpectrum" parent="BirdView/MusicPlayer/AudioView/SubViewport" node_paths=PackedStringArray("stream_player") instance=ExtResource("6_iolxi")]
-stream_player = NodePath("../../../AudioBirdPlayer")
+[node name="ShowSpectrum" parent="BirdView/MusicPlayer/AudioView/SubViewport" instance=ExtResource("6_iolxi")]
 
 [node name="AudioBirdPlayer" type="AudioStreamPlayer" parent="BirdView/MusicPlayer"]
-bus = &"Music"
 
 [node name="NameView" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -6.25
 offset_top = 456.0
-offset_right = 33.75
+offset_right = 40.0
 offset_bottom = 496.0
 script = ExtResource("6_2yjx1")
-text_speed = 0.003
-text_delay = 7.0
 
 [node name="ItemList" type="ItemList" parent="NameView"]
-visible = false
 layout_mode = 0
 offset_top = -16.0
 offset_right = 688.464
@@ -905,50 +854,11 @@ position = Vector2(484, 4)
 scale = Vector2(0.599996, 0.4)
 texture = ExtResource("14_eoe7a")
 
-[node name="TextDisplay" type="RichTextLabel" parent="NameView"]
-visible = false
-layout_mode = 0
-offset_left = 7.83133
-offset_top = -13.8313
-offset_right = 695.831
-offset_bottom = 192.969
-scale = Vector2(0.975904, 1)
-bbcode_enabled = true
-text = "Hello Clara .....
-
-Thank you for playing this game. I hope you enjoyed it :). I have had a great 2 (official) / 3 (non-official) months with you and have had a lot of fun making this small quiz for you. 
-
-You have brought a lot of joy to my life, I admire the way you look after those you love, the care you have for nature and others, and your creative spirit.
-
-
-          HAPPY VALENTINES DAY[color=red]   
-
-            *****     *****  
-          **     ** **     **  
-         **       ***       **  
-         **                 **  
-          **               **  
-           **           **  
-             **       **  
-               **   **  
-                 ***  
-
-[/color]"
-scroll_following = true
-tab_size = 5
-shortcut_keys_enabled = false
-meta_underlined = false
-hint_underlined = false
-
-[node name="Audio" type="AudioStreamPlayer" parent="NameView"]
-stream = SubResource("AudioStreamRandomizer_uy8tw")
-bus = &"SFX"
-
 [node name="Switches" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 847.145
+offset_left = 845.783
 offset_top = 554.217
-offset_right = 887.145
+offset_right = 885.783
 offset_bottom = 594.217
 scale = Vector2(0.8, 0.8)
 
@@ -968,12 +878,6 @@ z_index = 1
 scale = Vector2(1.5, 1.5)
 anim_fps = 15
 
-[node name="tape5" type="Sprite2D" parent="Switches/map_switch"]
-position = Vector2(200.301, 72.2891)
-rotation = -0.0415716
-scale = Vector2(0.393993, -0.0845145)
-texture = SubResource("GradientTexture2D_eowna")
-
 [node name="bird_switch" type="Control" parent="Switches"]
 anchors_preset = 0
 offset_right = 40.0
@@ -989,18 +893,6 @@ position = Vector2(100.904, 78.3132)
 rotation = -0.261799
 scale = Vector2(0.667, 0.366)
 texture = ExtResource("26_wsdxs")
-
-[node name="tape3" type="Sprite2D" parent="Switches/bird_switch"]
-position = Vector2(118.976, 64.0059)
-rotation = 0.523598
-scale = Vector2(0.218776, -0.0702068)
-texture = SubResource("GradientTexture2D_eowna")
-
-[node name="tape4" type="Sprite2D" parent="Switches/bird_switch"]
-position = Vector2(78.3134, 73.0421)
-rotation = -1.01666
-scale = Vector2(0.0809245, -0.0702068)
-texture = SubResource("GradientTexture2D_eowna")
 
 [node name="secret_switch" type="Control" parent="Switches"]
 anchors_preset = 0
@@ -1019,43 +911,18 @@ scale = Vector2(1.5, 1.5)
 enabled = false
 anim_fps = 15
 
-[node name="tape" type="Sprite2D" parent="Switches/secret_switch"]
-position = Vector2(-18.0721, 66.2649)
-rotation = -0.523598
-scale = Vector2(0.192145, 0.100415)
-texture = SubResource("GradientTexture2D_eowna")
-
-[node name="tape2" type="Sprite2D" parent="Switches/secret_switch"]
-position = Vector2(19.5785, 90.3613)
-rotation = -0.523598
-scale = Vector2(0.0646914, 0.0522343)
-texture = SubResource("GradientTexture2D_eowna")
-
 [node name="Background" type="ColorRect" parent="."]
-z_index = -2
+z_index = -3
 layout_mode = 0
-offset_left = -6.25
-offset_top = -0.60241
-offset_right = 1145.75
+offset_top = -0.602411
+offset_right = 1152.0
 offset_bottom = 63.3976
 scale = Vector2(1, 10.36)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-position = Vector2(-6.25, 0)
-scale = Vector2(1.009, 1)
-color = Color(0.172833, 0.172833, 0.172833, 1)
-
-[node name="AudioGuessWrong" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("32_er5xc")
-
-[node name="AudioGuessRight" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("33_qppd5")
-
-[node name="AudioSwitch" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("36_i7i3d")
-volume_db = -80.0
+color = Color(0.169245, 0.169245, 0.169245, 1)
 
 [connection signal="gui_input" from="BirdView/MusicPlayer/Control/Play" to="BirdView/MusicPlayer/Control/Play" method="_on_gui_input"]
 [connection signal="mouse_entered" from="BirdView/MusicPlayer/Control/Play" to="BirdView/MusicPlayer/Control/Play" method="_on_mouse_entered"]

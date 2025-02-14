@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=3 uid="uid://vu3ugylmgkur"]
+[gd_scene load_steps=10 format=3 uid="uid://vu3ugylmgkur"]
 
-[ext_resource type="Texture2D" uid="uid://dp1nbqysc5t23" path="res://img/other/Test.png" id="1_1bedq"]
 [ext_resource type="Texture2D" uid="uid://ctpor73i3uqnv" path="res://img/other/Map2-Sheet.png" id="2_odtjq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gkc4x"]
@@ -62,11 +61,6 @@ animations = [{
 }]
 
 [node name="MapView" type="Node2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(584, 408)
-scale = Vector2(18.2358, 12.826)
-texture = ExtResource("1_1bedq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(368, 208)

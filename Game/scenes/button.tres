@@ -28,4 +28,18 @@ animations = [{
 "loop": true,
 "name": &"Rest",
 "speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5st42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4acty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5st42")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
 }]

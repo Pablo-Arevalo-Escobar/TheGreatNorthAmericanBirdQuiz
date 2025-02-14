@@ -2,36 +2,41 @@ extends Control
 
 var overlay : ColorRect
 var button : AnimatedSprite2D
-var at_rest : bool
-var button_press : AudioListener2D
+var in_anim : bool
 var parent
-# Play the button press sound
-func play_audio() -> void:
-	button_press.play_audio()
+
+@onready
+var audio : AudioStreamPlayer
 
 func _ready() -> void:
 	button = get_node("button")
 	overlay = get_node("Overlay")
-	at_rest = true
+	audio = get_parent().get_node("AudioButtonPlayer")
+	audio.finished.connect(on_button_pressed)
+	in_anim = false
 	overlay.visible = false
-	
-func reset() -> void:
-	button.play("Rest")
 
 func _on_mouse_entered() -> void:
-	pass
-	#overlay.visible = true
+	overlay.visible = true
 
 func _on_mouse_exited() -> void:
 	overlay.visible = false
 	
-func toggle_button() -> void:
+func on_button_pressed() -> void:
+	if !in_anim:
+		return
+	button.pause()
+	audio.stop()
+	button.frame = 0
+	in_anim = false
 	SignalBus.button_pressed.emit(self.name)
-	if at_rest:
-		button.play("Pressed")
-	else:
-		button.play("Rest")
-	at_rest = !at_rest
+	
+func toggle_button() -> void:
+	if in_anim:
+		return
+	in_anim = true
+	button.play("default")
+	audio.play()	
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
